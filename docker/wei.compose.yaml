@@ -4,7 +4,7 @@
 services:
   wei_server:
     image: ghcr.io/ad-sdl/wei
-    container_name: wei_server
+    container_name: myc212_wc_server
     ports:
       - 8000:8000
     volumes:
@@ -19,7 +19,7 @@ services:
 
   wei_engine:
     image: ghcr.io/ad-sdl/wei
-    container_name: wei_engine
+    container_name: myc212_engine
     volumes:
       - ./workcell_defs:/workcell_defs
       - ${WEI_DATA_DIR}:/home/app/.wei
@@ -34,7 +34,7 @@ services:
 
   wei_redis:
     image: redis
-    container_name: wei_redis
+    container_name: myc212_redis
     ports:
       - 6379:6379
     volumes:

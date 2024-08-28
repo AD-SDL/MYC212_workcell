@@ -37,3 +37,9 @@ flowdef:
     action: take_picture
     args:
       file_name: "payload.file_name"
+    data_labels:
+      image: image_result
+
+
+
+

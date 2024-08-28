@@ -22,15 +22,24 @@ def main() -> None:
             "wait_time": 5,
             "file_name": "experiment_output.jpg",
         },
+        blocking=True,
+        simulate=False,
     )
-    print(json.dumps(run_info, indent=2))
+
+    #print(json.dumps(run_info, indent=2))
+
+    # TODO Non-hardcoded paths only!
+    output_dir = Path("/Users/cstone/Documents/RapidPrototypingLab/GitRepos/MYC212_workcell/applications/example_app/src/tests")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    datapoint_id = run_info.get_datapoint_id_by_label("image_result")
+    exp.save_datapoint_value(datapoint_id, output_dir / f"image_result.jpg")
 
     # The below line can be used to fetch the result and save it in our local directory
-    exp.get_wf_result_file(
-        run_id=run_info["run_id"],
-        filename=run_info["hist"]["Take Picture"]["action_msg"],
-        output_filepath="experiment_output.jpg",
-    )
+    # exp.get_wf_result_file(
+    #     run_id=run_info["run_id"],
+    #     filename=run_info["hist"]["Take Picture"]["action_msg"],
+    #     output_filepath="experiment_output.jpg",
+    # )
 
 
 if __name__ == "__main__":
